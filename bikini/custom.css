@@ -72,9 +72,7 @@ input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin
 @media screen and (max-width: 767px) {
   .flatpickr-day {line-height: 2.5 !important;}
   .w-lightbox-close {right: 30px; height: 16px; width: 16px; background-size: 16px; top: 20px;}
-  /*.w-lightbox-group, .w-lightbox-group .w-lightbox-view, .w-lightbox-group .w-lightbox-view:before {height: 96vh;}*/
 }
 @media screen and (max-width: 479px) {
   .dayContainer {min-width: 380px !important;}
-  /*.w-lightbox-group, .w-lightbox-group .w-lightbox-view, .w-lightbox-group .w-lightbox-view:before {height: 96vh;}*/
 }
