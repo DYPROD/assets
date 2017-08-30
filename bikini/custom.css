@@ -6,7 +6,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 .form-field.text-area {resize: none;}
 .flatpickr-calendar {margin-top: -24px !important}
-
 #staff .responsive-image {mix-blend-mode: multiply;}
 
 #lightboxWrapper > a:nth-child(n+2) {
@@ -40,7 +39,7 @@ input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin
 .slider-arrow-left,.w-lightbox-left {cursor: url(https://daks2k3a4ib2z.cloudfront.net/595059ab1d62971873de8c32/59673c94355aa852e917d1a3_arrow-directional-left.png), default;}
 .slider-arrow-right,.w-lightbox-right {cursor: url(https://daks2k3a4ib2z.cloudfront.net/595059ab1d62971873de8c32/59673c940b9d8607d43390d0_arrow-directional-right.png), default;}
 
-.w-lightbox-backdrop {background: rgba(0,0,0,0.9);}
+.w-lightbox-backdrop {background: black !important;}
 
 .w-slider-nav.w-round > div {
   border-radius: 0;
