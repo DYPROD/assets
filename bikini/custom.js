@@ -265,10 +265,6 @@ $(document).ready(function() {
   // add window listener for GMaps
   google.maps.event.addDomListener(window, 'load', initialize);
 
-  $(window).resize(function() {
-    setTimeout(function(){  initialize(); }, 610);
-  });
-
   //Nav Button Interactions
 
   $(".ham-normal").hover(function() {
@@ -407,7 +403,7 @@ $(document).ready(function() {
   });
 
   $('#conceptScroll').click(function() {
-    $(this).attr('href','#theme')
+    $(this).attr('href','#theme');
   });
 
   $('[data-close="all"],[data-select="amount"]').click(function() { //automatically close dropdown on selecting children
@@ -796,33 +792,3 @@ function updateTime(e){if(self.config.noCalendar&&!self.selectedDates.length)
           });
         });
       });
-
-
-
-      (function($) {
-
-        $.fn.visible = function(partial) {
-
-          var $t            = $(this),
-          $w            = $(window),
-          viewTop       = $w.scrollTop(),
-          viewBottom    = viewTop + $w.height(),
-          _top          = $t.offset().top,
-          _bottom       = _top + $t.height(),
-          compareTop    = partial === true ? _bottom : _top,
-          compareBottom = partial === true ? _top : _bottom;
-
-          return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
-
-        };
-
-      })(jQuery);
-
-      $(window).scroll(function(event) {
-          if ($('#collaborators').visible(true)) {
-            $('.staff-image').css('background-color','#d95d88');
-          }
-          else {
-            $('.staff-image').css('background-color','#ae155c');
-          }
-        });
