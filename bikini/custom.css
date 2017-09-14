@@ -1,4 +1,4 @@
-.form-field.dropdown,.container-fixed-post-stack, .container-fixed, .scroller,.footer-limiter,.w-lightbox-inactive,.flatpickr-input {pointer-events: none;}
+.form-field.dropdown,.container-fixed-post-stack, .container-fixed, .scroller,.footer-limiter,.w-lightbox-inactive,.flatpickr-input,.gallery.page-content {pointer-events: none;}
 .container-fixed > div {pointer-events: all;}
 [tabindex="1"] , .form-submit {outline: none;}
 input[readonly] {background-color: transparent !important;}
