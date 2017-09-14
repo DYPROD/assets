@@ -809,9 +809,8 @@ function updateTime(e){if(self.config.noCalendar&&!self.selectedDates.length)
         Webflow.push(function() {
           $.scrollify({
             section: ".stack-image-outer",
-            sectionName: "section-name",
             easing: "easeInOutExpo",
-            scrollSpeed: 500,
+            scrollSpeed: 550,
             offset: 0,
             updateHash: false,
             scrollbars: true
