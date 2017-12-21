@@ -22,249 +22,248 @@ var ix = Webflow.require('ix');
 
 $(document).ready(function() {
 
-  // Custom Bikini Map
-
-  $('.map-modal').css({'pointer-events':'none'});
-
-  $('.close-map-icon').click(function() {
-    $('.map-modal').css({'pointer-events':'none'});
-  });
-
-  $('#mapTriggerMenu,#mapTriggerFooter').click(function() {
-    $('.map-modal').css({'pointer-events':'all'});
-  });
-
   function initialize() {
 
-    var gmarkers = [];
-    var map = null;
-    var infowindow = null;
-    var color = '#e51772';
+      var gmarkers = [];
+      var map = null;
+      var infowindow = null;
+      var color = '#e51772';
 
-    var styles = [
-      {
-        "featureType": "all",
-        "elementType": "geometry.fill",
-        "stylers": [
+      var styles = [
           {
-            "color": "#e51772"
+              "featureType": "all",
+              "elementType": "geometry.fill",
+              "stylers": [
+                  {
+                      "color": "#e51772"
           }
         ]
       },
-      {
-        "featureType": "all",
-        "elementType": "geometry.stroke",
-        "stylers": [
           {
-            "visibility": "off"
+              "featureType": "all",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                  {
+                      "visibility": "off"
           }
         ]
       },
-      {
-        "featureType": "all",
-        "elementType": "labels.text",
-        "stylers": [
           {
-            "visibility": "off"
+              "featureType": "all",
+              "elementType": "labels.text",
+              "stylers": [
+                  {
+                      "visibility": "off"
           }
         ]
       },
-      {
-        "featureType": "all",
-        "elementType": "labels.icon",
-        "stylers": [
           {
-            "visibility": "off"
+              "featureType": "all",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "visibility": "off"
           }
         ]
       },
-      {
-        "featureType": "poi",
-        "elementType": "all",
-        "stylers": [
           {
-            "visibility": "off"
+              "featureType": "poi",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "visibility": "off"
           }
         ]
       },
-      {
-        "featureType": "poi",
-        "elementType": "labels.icon",
-        "stylers": [
           {
-            "visibility": "off"
+              "featureType": "poi",
+              "elementType": "labels.icon",
+              "stylers": [
+                  {
+                      "visibility": "off"
           }
         ]
       },
-      {
-        "featureType": "road",
-        "elementType": "geometry.fill",
-        "stylers": [
           {
-            "saturation": "0"
+              "featureType": "road",
+              "elementType": "geometry.fill",
+              "stylers": [
+                  {
+                      "saturation": "0"
           },
-          {
-            "lightness": "0"
+                  {
+                      "lightness": "0"
           },
-          {
-            "color": "#e51772"
+                  {
+                      "color": "#e51772"
           },
-          {
-            "gamma": "1.20"
+                  {
+                      "gamma": "1.20"
           }
         ]
       },
-      {
-        "featureType": "road",
-        "elementType": "geometry.stroke",
-        "stylers": [
           {
-            "color": "#e51772"
+              "featureType": "road",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                  {
+                      "color": "#e51772"
           }
         ]
       },
-      {
-        "featureType": "road",
-        "elementType": "labels.text",
-        "stylers": [
           {
-            "lightness": "-100"
+              "featureType": "road",
+              "elementType": "labels.text",
+              "stylers": [
+                  {
+                      "lightness": "-100"
           },
-          {
-            "weight": "0.03"
+                  {
+                      "weight": "0.03"
           },
-          {
-            "visibility": "simplified"
+                  {
+                      "visibility": "simplified"
           }
         ]
       },
-      {
-        "featureType": "water",
-        "elementType": "all",
-        "stylers": [
           {
-            "color": "#e51772"
+              "featureType": "water",
+              "elementType": "all",
+              "stylers": [
+                  {
+                      "color": "#e51772"
           },
-          {
-            "visibility": "on"
+                  {
+                      "visibility": "on"
           },
-          {
-            "lightness": "-15"
+                  {
+                      "lightness": "-15"
           }
         ]
       }
     ];
 
-    var mapOptions = {
-      center: new google.maps.LatLng(-8.682853,115.157498),
-      zoom: 18,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      zoomControl: false,
-      fullscreenControl: false,
-      gestureHandling: 'greedy',
-      styles: styles
-    };
-
-    var mapOptionsMobile = {
-      center: new google.maps.LatLng(-8.682853,115.157498),
-      zoom: 17,
-      mapTypeId: google.maps.MapTypeId.ROADMAP,
-      mapTypeControl: false,
-      zoomControl: false,
-      fullscreenControl: false,
-      styles: styles
-    };
-
-    map = new google.maps.Map(document.getElementById("mainMap"), mapOptions);
-    mapMobile = new google.maps.Map(document.getElementById("mainMapMobile"), mapOptionsMobile);
-
-    google.maps.event.addListener(map, 'click', function() {
-      infowindow.close();
-    });
-
-    google.maps.event.addListener(mapMobile, 'click', function() {
-      infowindow.close();
-    });
-
-    var locations = [
-      ['Bikini Restaurant Bali', -8.682853,115.157503]
-    ];
-
-    /*infowindow = new google.maps.InfoWindow({
-    size: new google.maps.Size(150,50)
-  });*/
-  function setMarkers(locations) {
-    for (var i = 0; i < locations.length; i++) {
-      var iconBase = {
-        url: "https://daks2k3a4ib2z.cloudfront.net/595059ab1d62971873de8c32/596780404c807d6b4e957027_map-pin-icon.png", // url
-        scaledSize: new google.maps.Size(35,55), // scaled size
-        origin: new google.maps.Point(0,0), // origin
-        anchor: new google.maps.Point(17.5,55) // anchor
+      var mapOptions = {
+          center: new google.maps.LatLng(-8.682853, 115.157498),
+          zoom: 18,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false,
+          zoomControl: false,
+          fullscreenControl: false,
+          gestureHandling: 'greedy',
+          styles: styles
       };
-      var location = locations[i];
-      var myLatLng = new google.maps.LatLng(location[1], location[2]);
 
-      var marker = new google.maps.Marker({
-        position: myLatLng,
-        animation: google.maps.Animation.DROP,
-        map: map,
-        icon: iconBase,
-        title: location[0]
+      var mapOptionsMobile = {
+          center: new google.maps.LatLng(-8.682853, 115.157498),
+          zoom: 17,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          mapTypeControl: false,
+          zoomControl: false,
+          fullscreenControl: false,
+          styles: styles
+      };
+
+      map = new google.maps.Map(document.getElementById("mainMap"), mapOptions);
+      mapMobile = new google.maps.Map(document.getElementById("mainMapMobile"), mapOptionsMobile);
+
+      google.maps.event.addListener(map, 'click', function () {
+          infowindow.close();
       });
 
-      var markerMobile = new google.maps.Marker({
-        position: myLatLng,
-        animation: google.maps.Animation.DROP,
-        map: mapMobile,
-        icon: iconBase,
-        title: location[0]
+      google.maps.event.addListener(mapMobile, 'click', function () {
+          infowindow.close();
       });
 
-      google.maps.event.addListener(marker, "click", function () {
-        map.setCenter(marker.getPosition());
-        infowindow.setContent(this.html);
-        infowindow.open(map, this);
-      });
-      gmarkers.push(marker);
+      var locations = [
+      ['Bikini Restaurant Bali', -8.682853, 115.157503]
+    ];
 
-      google.maps.event.addListener(markerMobile, "click", function () {
-        map.setCenter(markerMobile.getPosition());
-        infowindow.setContent(this.html);
-        infowindow.open(mapMobile, this);
-      });
-      gmarkers.push(markerMobile);
+      function setMarkers(locations) {
+          for (var i = 0; i < locations.length; i++) {
+              var iconBase = {
+                  url: "https://daks2k3a4ib2z.cloudfront.net/595059ab1d62971873de8c32/596780404c807d6b4e957027_map-pin-icon.png", // url
+                  scaledSize: new google.maps.Size(35, 55), // scaled size
+                  origin: new google.maps.Point(0, 0), // origin
+                  anchor: new google.maps.Point(17.5, 55) // anchor
+              };
+              var location = locations[i];
+              var myLatLng = new google.maps.LatLng(location[1], location[2]);
 
-      bounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(-168.999999, -358.999999),
-        new google.maps.LatLng(168.999999, 358.999999));
+              var marker = new google.maps.Marker({
+                  position: myLatLng,
+                  animation: google.maps.Animation.DROP,
+                  map: map,
+                  icon: iconBase,
+                  title: location[0]
+              });
+
+              var markerMobile = new google.maps.Marker({
+                  position: myLatLng,
+                  animation: google.maps.Animation.DROP,
+                  map: mapMobile,
+                  icon: iconBase,
+                  title: location[0]
+              });
+
+              google.maps.event.addListener(marker, "click", function () {
+                  map.setCenter(marker.getPosition());
+                  infowindow.setContent(this.html);
+                  infowindow.open(map, this);
+              });
+              gmarkers.push(marker);
+
+              google.maps.event.addListener(markerMobile, "click", function () {
+                  map.setCenter(markerMobile.getPosition());
+                  infowindow.setContent(this.html);
+                  infowindow.open(mapMobile, this);
+              });
+              gmarkers.push(markerMobile);
+
+              bounds = new google.maps.LatLngBounds(
+                  new google.maps.LatLng(-168.999999, -358.999999),
+                  new google.maps.LatLng(168.999999, 358.999999));
 
 
-        rect = new google.maps.Rectangle({
-          bounds: bounds,
-          fillColor: color,
-          fillOpacity: 0.5,
-          strokeWeight: 0,
-          map: map
-        });
+              rect = new google.maps.Rectangle({
+                  bounds: bounds,
+                  fillColor: color,
+                  fillOpacity: 0.5,
+                  strokeWeight: 0,
+                  map: map
+              });
 
-        rect = new google.maps.Rectangle({
-          bounds: bounds,
-          fillColor: color,
-          fillOpacity: 0.5,
-          strokeWeight: 0,
-          map: mapMobile
-        });
+              rect = new google.maps.Rectangle({
+                  bounds: bounds,
+                  fillColor: color,
+                  fillOpacity: 0.5,
+                  strokeWeight: 0,
+                  map: mapMobile
+              });
+          }
       }
-    }
 
-    // Add the markers
-    setMarkers(locations);
+      setMarkers(locations);
+  }
+    
+  google.maps.event.addDomListener(window, 'load', initialize);
 
+  function adjustMenuMap() {
+      setTimeout(function () {
+          initialize();
+      }, 10);
   }
 
-  // add window listener for GMaps
-  google.maps.event.addDomListener(window, 'load', initialize);
+  $('.map-modal').css({'pointer-events': 'none'});
+
+  $('.close-map-icon').click(function () {
+      $('.map-modal').css({'pointer-events': 'none'});
+  });
+
+  $('#mapTriggerMenu,#mapTriggerFooter').click(function () {
+      $('.map-modal').css({'pointer-events': 'all'});
+      adjustMenuMap();
+  });
 
   //Nav Button Interactions
 
@@ -362,40 +361,42 @@ $(document).ready(function() {
   });
 
 
-  $(window).resize(function() {
-    $(window).scroll(function() {
-      var width = $(window).width();
-      var scrollTop = $(this).scrollTop();
+  $(window).resize(function () {
+      $(window).scroll(function () {
+          var width = $(window).width();
+          var scrollTop = $(this).scrollTop();
 
-      if( width <= 479 ) {
-        if ($(this).scrollTop() >= 200) {
-          $('.container-fixed').css('opacity','0');
-        } else {
-          $('.container-fixed').css('opacity','1');
-        }
-      } else if( width >= 480 ) {
-        $('.container-fixed').css('opacity','1');
-      }
-
-      $('.section-link').each(function() {
-        var topDistance = $(this).offset().top;
-        var fromTop = (($(window).height())/2.5);
-
-        if( width <= 479 ) {
-          if ( (topDistance-fromTop) < scrollTop ) {
-            $(this).css(activeScale);
-            $(this).children('.responsive-image-dark').css(activeBrightness);
-            $(this).children('.section-text').css('color','#e51772');
-          } else {
-            $(this).css(inactiveScale);
-            $(this).children('.responsive-image-dark').css(inactiveBrightness);
-            $(this).children('.section-text').css('color','grey');
+          if (width <= 479) {
+              if ($(this).scrollTop() >= 200) {
+                  $('.container-fixed').css('opacity', '0');
+              } else {
+                  $('.container-fixed').css('opacity', '1');
+              }
+          } else if (width >= 480) {
+              $('.container-fixed').css('opacity', '1');
           }
-        } else if( width >= 480 ) {
-          //DO NOTHING
-        }
+
+          $('.section-link').each(function () {
+              var topDistance = $(this).offset().top;
+              var fromTop = (($(window).height()) / 2.5);
+
+              if (width <= 479) {
+                  if ((topDistance - fromTop) < scrollTop) {
+                      $(this).css(activeScale);
+                      $(this).children('.responsive-image-dark').css(activeBrightness);
+                      $(this).children('.section-text').css('color', '#e51772');
+                  } else {
+                      $(this).css(inactiveScale);
+                      $(this).children('.responsive-image-dark').css(inactiveBrightness);
+                      $(this).children('.section-text').css('color', 'grey');
+                  }
+              } else if (width >= 480) {
+                  //DO NOTHING
+              }
+          });
       });
-    });
+
+      adjustMenuMap();
   });
 
   $(window).resize();
