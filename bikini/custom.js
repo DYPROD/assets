@@ -501,7 +501,7 @@ $(document).ready(function() {
 //====================================
 
 
-$(window).load(function() {
+$(window).on("load", function() {
   $('[data-expand="relfooter"]').click(function () { //Change name in mobile footer
     $("html, body").animate({ scrollTop: $(document).height() }, 'slow');
   });
