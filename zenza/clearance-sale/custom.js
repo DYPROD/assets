@@ -46,34 +46,36 @@ $(function() {
 });
 
 
-$(window).on("load", function() {
+// $(window).on("load", function() {
+//   $('[data-img="source"]').each(function() {
+//     var self = $(this) ;
+//     var newbgsrc = $(self).prop('currentSrc');
+//     setTimeout(function(){
+//       $(self).closest('[data-img="bg"]').css({'background-image':'url(' + newbgsrc + ')','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
+//     }, 50);
+//   });
+// });
+
+$(document).ready(function(){
   $('[data-img="source"]').each(function() {
-    var self = $(this) ;
-    var newbgsrc = $(self).prop('currentSrc');
-    setTimeout(function(){
-      $(self).closest('[data-img="bg"]').css({'background-image':'url(' + newbgsrc + ')','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
-    }, 50);
-  });
-});
+    var self = $(this);
 
-$('[data-image="source"]').each(function() {
-  var self = $(this);
-
-  if ($(self).length > 0 && !$(self).get(0).complete) {
-    $(self).on('load', function() {
+    if ($(self).length > 0 && !$(self).get(0).complete) {
+      $(self).on('load', function() {
+        var newbgsrc = $(self).prop('currentSrc');
+        setTimeout(function() {
+          $(self).closest('[data-img="bg"]').css({'background-image':'url(' + newbgsrc + ')','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
+        }, 100);
+      });
+    } else if ( $(self).length < 0 && $(self).get(0).complete ) {
+      setTimeout(function() {
+        $(self).closest('[data-image="bg"]').css({ 'background-image':'url(https://uploads-ssl.webflow.com/594c186396962151a16cf268/5a9fe0aa1b1dee00012ddc4b_image-placeholder.svg)','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
+      },100);
+    } else {
       var newbgsrc = $(self).prop('currentSrc');
       setTimeout(function() {
-        $(self).closest('[data-image="bg"]').css({'background-image': 'url(' + newbgsrc + ')'});
+          $(self).closest('[data-img="bg"]').css({'background-image':'url(' + newbgsrc + ')','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
       }, 100);
-    });
-  } else if ( $(self).length < 0 && $(self).get(0).complete ) {
-    setTimeout(function() {
-      $(self).closest('[data-image="bg"]').css({ 'background-image':'url(https://uploads-ssl.webflow.com/594c186396962151a16cf268/5a9fe0aa1b1dee00012ddc4b_image-placeholder.svg)','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
-    },100);
-  } else {
-    var newbgsrc = $(self).prop('currentSrc');
-    setTimeout(function() {
-        $(self).closest('[data-image="bg"]').css({'background-image': 'url(' + newbgsrc + ')'});
-    }, 100);
-  }
+    }
+  });
 });
