@@ -37,7 +37,7 @@ $(document).ready(function(){
         } else {
           var newbgsrc = $(self).prop('currentSrc');
           setTimeout(function() {
-              $(self).closest('[data-image="bg"]').css({'background-image': 'url(' + newbgsrc + ')'});
+              $(self).closest('.pod-image-container').css({ 'background-image':'url(' + newbgsrc + ')','transition': 'background .75s ease','-webkit-transition': 'background .75s ease' });
           }, 100);
         }
       }).each(function() {
