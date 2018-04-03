@@ -1,72 +1,16 @@
-[
-  {
-    "airportsFields": "name",
-    "airlineFields": "name",
-    "airports__001": "Goroka",
-    "airports__002": "Goroka",
-    "airports__003": "Papua New Guinea",
-    "airports__004": 145.391881,
-    "airports__005": -6.081689,
-    "airlines__001": "Air France",
-    "airlines__002": "France",
-    "routes__001": 9,
-    "routes__002": 4242,
-    "routes__003": 3777
-  },
-  {
-    "airportsFields": "city",
-    "airlineFields": "country",
-    "airports__001": "",
-    "airports__002": "",
-    "airports__003": "",
-    "airports__004": "",
-    "airports__005": "",
-    "airlines__001": "",
-    "airlines__002": "",
-    "routes__001": "",
-    "routes__002": "",
-    "routes__003": ""
-  },
-  {
-    "airportsFields": "country",
-    "airlineFields": "",
-    "airports__001": "",
-    "airports__002": "",
-    "airports__003": "",
-    "airports__004": "",
-    "airports__005": "",
-    "airlines__001": "",
-    "airlines__002": "",
-    "routes__001": "",
-    "routes__002": "",
-    "routes__003": ""
-  },
-  {
-    "airportsFields": "longitude",
-    "airlineFields": "",
-    "airports__001": "",
-    "airports__002": "",
-    "airports__003": "",
-    "airports__004": "",
-    "airports__005": "",
-    "airlines__001": "",
-    "airlines__002": "",
-    "routes__001": "",
-    "routes__002": "",
-    "routes__003": ""
-  },
-  {
-    "airportsFields": "latitude",
-    "airlineFields": "",
-    "airports__001": "",
-    "airports__002": "",
-    "airports__003": "",
-    "airports__004": "",
-    "airports__005": "",
-    "airlines__001": "",
-    "airlines__002": "",
-    "routes__001": "",
-    "routes__002": "",
-    "routes__003": ""
-  }
-]
+{
+    "airportsFields":["name","city","country","longitude","latitude"],
+ 
+    "airlineFields":["name","country"],
+    
+    "airports":[["Goroka","Goroka","Papua New Guinea",145.391881,-6.081689],["Madang","Madang","Papua New Guinea",145.7887,-5.207083],["Mount Hagen","Mount Hagen","Papua New Guinea",144.295861,-5.826789],["Nadzab","Nadzab","Papua New Guinea",146.726242,-6.569828],["Port Moresby Jacksons Intl","Port Moresby","Papua New Guinea",147.22005,-9.443383]],
+    
+    "airlines":[["Air France","France"],["easyJet","United Kingdom"],["Southwest Airlines","United States"],["China Eastern Airlines","China"],["Air China","China"],["China Southern Airlines","China"],["US Airways","United States"],["Delta Air Lines","United States"],["United Airlines","United States"],["American Airlines","United States"],["Ryanair","Ireland"]],
+    
+    "routes":[
+        [9,4242,3777],
+        [9,4242,3653],
+        [9,3619,3571],
+        [9,3911,3571],
+        [9,3911,3385]
+    ]}
