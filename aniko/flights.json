@@ -1,1 +1,72 @@
-
+[
+  {
+    "airportsFields": "name",
+    "airlineFields": "name",
+    "airports__001": "Goroka",
+    "airports__002": "Goroka",
+    "airports__003": "Papua New Guinea",
+    "airports__004": 145.391881,
+    "airports__005": -6.081689,
+    "airlines__001": "Air France",
+    "airlines__002": "France",
+    "routes__001": 9,
+    "routes__002": 4242,
+    "routes__003": 3777
+  },
+  {
+    "airportsFields": "city",
+    "airlineFields": "country",
+    "airports__001": "",
+    "airports__002": "",
+    "airports__003": "",
+    "airports__004": "",
+    "airports__005": "",
+    "airlines__001": "",
+    "airlines__002": "",
+    "routes__001": "",
+    "routes__002": "",
+    "routes__003": ""
+  },
+  {
+    "airportsFields": "country",
+    "airlineFields": "",
+    "airports__001": "",
+    "airports__002": "",
+    "airports__003": "",
+    "airports__004": "",
+    "airports__005": "",
+    "airlines__001": "",
+    "airlines__002": "",
+    "routes__001": "",
+    "routes__002": "",
+    "routes__003": ""
+  },
+  {
+    "airportsFields": "longitude",
+    "airlineFields": "",
+    "airports__001": "",
+    "airports__002": "",
+    "airports__003": "",
+    "airports__004": "",
+    "airports__005": "",
+    "airlines__001": "",
+    "airlines__002": "",
+    "routes__001": "",
+    "routes__002": "",
+    "routes__003": ""
+  },
+  {
+    "airportsFields": "latitude",
+    "airlineFields": "",
+    "airports__001": "",
+    "airports__002": "",
+    "airports__003": "",
+    "airports__004": "",
+    "airports__005": "",
+    "airlines__001": "",
+    "airlines__002": "",
+    "routes__001": "",
+    "routes__002": "",
+    "routes__003": ""
+  }
+]
