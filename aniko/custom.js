@@ -61,9 +61,11 @@ addLoadEvent(function(){
 
 $(document).ready(function() {
     
-    $('.w-nav-menu').on('click', 'a', function() {
-        $('.w-nav-button').triggerHandler('tap');
-    });
+    if ($(window).width() <= 767) {
+        $('.w-nav-menu').on('click', 'a', function() {
+            $('.w-nav-button').triggerHandler('tap');
+        });
+    }
     
     $('#play-video').on('click', function(ev) {
         $("#video")[0].src += "&autoplay=1";
